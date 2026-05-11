@@ -1,0 +1,35 @@
+{
+    "name": "TechWiseIQ Technologies",
+    "short_name": "TechWiseIQ",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#060B18",
+    "theme_color": "#060B18",
+    "description": "Dubai's leading IT & AI solutions partner — software development, cybersecurity, cloud solutions, and IT infrastructure services.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
