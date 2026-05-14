@@ -5,6 +5,7 @@
 // - Mobile (< 900px): Single-column stacked layout
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../site_config.dart';
 import '../theme/app_colors.dart';
 import 'section_container.dart';
 import '../pages/about_page.dart';
@@ -192,7 +193,7 @@ class TechWiseFooter extends StatelessWidget {
         const SizedBox(height: 18),
         const _ContactItem(
           icon: Icons.email_outlined,
-          text: 'hello@techwiseiq.com',
+          text: SiteConfig.contactEmail,
         ),
         const SizedBox(height: 18),
         const _ContactItem(icon: Icons.phone_outlined, text: '+971 50 3150751'),

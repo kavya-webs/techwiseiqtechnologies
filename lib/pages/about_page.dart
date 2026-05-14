@@ -594,7 +594,7 @@ class _LeadershipSection extends StatelessWidget {
                         ),
                         SizedBox(height: 16),
                         _Leader(
-                          'Rudrakumar Makwana',
+                          'Rudra Makwana',
                           'Operations Head',
                           'NESA compliance expert with a decade of experience.',
                         ),
@@ -620,7 +620,7 @@ class _LeadershipSection extends StatelessWidget {
                         SizedBox(width: 24),
                         Expanded(
                           child: _Leader(
-                            'Rudrakumar Makwana',
+                            'Rudra Makwana',
                             'Operations Head',
                             'NESA compliance expert with a decade of experience.',
                           ),

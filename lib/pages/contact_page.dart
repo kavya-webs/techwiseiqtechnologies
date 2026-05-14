@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../site_config.dart';
 import '../theme/app_colors.dart';
 import '../widgets/nav_bar.dart';
 import '../widgets/footer.dart';
@@ -359,7 +360,7 @@ class _ContactContent extends StatelessWidget {
         const SizedBox(height: 32),
         const _Field('Name', 'Your Name'),
         const SizedBox(height: 24),
-        const _Field('Email', 'email@company.com'),
+        const _Field('Email', SiteConfig.contactEmail),
         const SizedBox(height: 24),
         const _Field('Subject', 'Project Inquiry'),
         const SizedBox(height: 24),
@@ -414,7 +415,7 @@ class _ContactContent extends StatelessWidget {
         const _InfoCard(
           Icons.email_outlined,
           'Email Us',
-          'hello@techwiseiq.com',
+          SiteConfig.contactEmail,
         ),
         const SizedBox(height: 24),
         const _InfoCard(Icons.phone_outlined, 'Call Us', '+971 50 3150751'),

@@ -258,14 +258,16 @@ class _ServicesHeroState extends State<_ServicesHero>
   late AnimationController _ctrl;
   final ValueNotifier<int?> _hovered = ValueNotifier<int?>(null);
 
-  // Planet data — split into inner (0-2) and outer (3-5) rings
+  // Planet data — split into inner (0-2) and outer (3-5) rings.
+  // Use IconData (Icons.*), not raw codepoints: release web builds tree-shake
+  // MaterialIcons and only keep glyphs referenced via IconData.
   static const _planetData = [
-    {'label': 'Software Dev', 'icon': 0xe86f}, // code
-    {'label': 'Web Dev', 'icon': 0xe894}, // web
-    {'label': 'IT Infra', 'icon': 0xe871}, // dns
-    {'label': 'Cyber Security', 'icon': 0xe8e8}, // security
-    {'label': 'Data Mgmt', 'icon': 0xe1af}, // data_usage
-    {'label': 'Hardware', 'icon': 0xe322}, // memory
+    {'label': 'Software Dev', 'icon': Icons.code},
+    {'label': 'Web Dev', 'icon': Icons.web},
+    {'label': 'IT Infra', 'icon': Icons.dns},
+    {'label': 'Cyber Security', 'icon': Icons.security},
+    {'label': 'Data Mgmt', 'icon': Icons.data_usage},
+    {'label': 'Hardware', 'icon': Icons.memory},
   ];
 
   @override
@@ -727,12 +729,14 @@ class _OrbitalPainter extends CustomPainter {
         ..strokeWidth = isHovered ? 2 : 1,
     );
 
-    // Icon (using material icon codepoints)
+    // Icon: draw from IconData so web release retains font glyphs (see _planetData).
+    final icon = planetData[index]['icon'] as IconData;
     final iconTp = TextPainter(
       text: TextSpan(
-        text: String.fromCharCode(planetData[index]['icon'] as int),
+        text: String.fromCharCode(icon.codePoint),
         style: TextStyle(
-          fontFamily: 'MaterialIcons',
+          fontFamily: icon.fontFamily,
+          package: icon.fontPackage,
           fontSize: isHovered ? 22 : 18,
           color: isHovered ? AppColors.white : const Color(0xFF00D4FF),
         ),

@@ -1,9 +1,10 @@
 ﻿// TechWiseIQ - Book a Meeting Page
-// Schedule a free consultation. Hero + Calendly placeholder + Why Book cards.
+// Schedule a free consultation. Hero + Calendly embed + Why Book cards.
 // All sections adapt to mobile (< 900px) via MediaQuery breakpoints.
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_colors.dart';
+import '../widgets/calendly_embed.dart';
 import '../widgets/nav_bar.dart';
 import '../widgets/footer.dart';
 import '../widgets/reveal_on_scroll.dart';
@@ -18,11 +19,11 @@ class BookMeetingPage extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Column(
-              children: const [
-                _BookHero(),
+              children: [
+                const _BookHero(),
                 _Calendly(),
-                _WhyBook(),
-                RevealOnScroll(child: TechWiseFooter()),
+                const _WhyBook(),
+                const RevealOnScroll(child: TechWiseFooter()),
               ],
             ),
           ),
@@ -164,32 +165,7 @@ class _Calendly extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.calendar_today,
-                  size: m ? 48 : 64,
-                  color: AppColors.grey,
-                ),
-                const SizedBox(height: 24),
-                Text(
-                  'Calendly Widget Placeholder',
-                  style: GoogleFonts.inter(
-                    fontSize: m ? 16 : 20,
-                    color: AppColors.secondaryDark,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Use standard Calendly inline embed here.',
-                  style: GoogleFonts.inter(
-                    fontSize: m ? 12 : 14,
-                    color: AppColors.grey,
-                  ),
-                ),
-              ],
-            ),
+            child: CalendlyBookingEmbed(height: m ? 520 : 680),
           ),
         ),
       ),
