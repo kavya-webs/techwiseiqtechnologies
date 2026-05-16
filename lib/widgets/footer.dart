@@ -152,7 +152,7 @@ class TechWiseFooter extends StatelessWidget {
           width: 200,
           height: 200,
           child: Image.asset(
-            'assets/images/Logo.png',
+            'assets/images/logopng.png',
             width: 200,
             height: 200,
             fit: BoxFit.contain,
