@@ -149,12 +149,12 @@ class TechWiseFooter extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 200,
-          height: 200,
+          width: 400,
+          height: 400,
           child: Image.asset(
             'assets/images/logopng.png',
-            width: 200,
-            height: 200,
+            width: 400,
+            height: 400,
             fit: BoxFit.contain,
             alignment: Alignment.centerLeft,
             errorBuilder: (context, error, stackTrace) {
