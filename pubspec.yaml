@@ -67,6 +67,8 @@ flutter:
   assets:
     - assets/images/Logo.png
     - assets/images/burj.jpeg
+    - assets/images/dubaiimg.JPEG
+    - assets/images/rudra.jpeg
     - assets/images/generated-1771352869904.png
     - assets/images/generated-1771353550724.png
     - assets/images/generated-1771418298230.png

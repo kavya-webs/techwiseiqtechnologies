@@ -11,6 +11,20 @@ import 'section_container.dart';
 import '../pages/about_page.dart';
 import '../pages/services_page.dart';
 import '../pages/contact_page.dart';
+import '../pages/home_page.dart';
+import '../pages/privacy_policy_page.dart';
+import '../pages/terms_of_service_page.dart';
+
+void _footerNavigate(BuildContext context, Widget page) {
+  Navigator.pushReplacement(
+    context,
+    PageRouteBuilder(
+      pageBuilder: (c, a, sa) => page,
+      transitionsBuilder:
+          (c, a, sa, child) => FadeTransition(opacity: a, child: child),
+    ),
+  );
+}
 
 /// Site-wide footer — placed at the bottom of every page.
 class TechWiseFooter extends StatelessWidget {
@@ -87,9 +101,9 @@ class TechWiseFooter extends StatelessWidget {
             title: 'Company',
             linkDestinations: const {
               'About Us': 'about',
-              'Careers': 'about',
               'Contact': 'contact',
-              'Privacy Policy': null,
+              'Privacy Policy': 'privacy',
+              'Terms of Service': 'terms',
             },
           ),
         ),
@@ -119,9 +133,9 @@ class TechWiseFooter extends StatelessWidget {
           title: 'Company',
           linkDestinations: const {
             'About Us': 'about',
-            'Careers': 'about',
             'Contact': 'contact',
-            'Privacy Policy': null,
+            'Privacy Policy': 'privacy',
+            'Terms of Service': 'terms',
           },
         ),
         const SizedBox(height: 32),
@@ -216,11 +230,17 @@ class TechWiseFooter extends StatelessWidget {
               ),
               Row(
                 children: [
-                  _FooterBottomLink('Privacy Policy'),
+                  _FooterBottomLink(
+                    'Privacy Policy',
+                    page: const PrivacyPolicyPage(),
+                  ),
                   const SizedBox(width: 24),
-                  _FooterBottomLink('Terms of Service'),
+                  _FooterBottomLink(
+                    'Terms of Service',
+                    page: const TermsOfServicePage(),
+                  ),
                   const SizedBox(width: 24),
-                  _FooterBottomLink('Sitemap'),
+                  _FooterBottomLink('Sitemap', page: const HomePage()),
                 ],
               ),
             ],
@@ -238,9 +258,15 @@ class TechWiseFooter extends StatelessWidget {
                 runSpacing: 8,
                 alignment: WrapAlignment.center,
                 children: [
-                  _FooterBottomLink('Privacy Policy'),
-                  _FooterBottomLink('Terms of Service'),
-                  _FooterBottomLink('Sitemap'),
+                  _FooterBottomLink(
+                    'Privacy Policy',
+                    page: const PrivacyPolicyPage(),
+                  ),
+                  _FooterBottomLink(
+                    'Terms of Service',
+                    page: const TermsOfServicePage(),
+                  ),
+                  _FooterBottomLink('Sitemap', page: const HomePage()),
                 ],
               ),
               const SizedBox(height: 12),
@@ -271,14 +297,7 @@ class _FooterNavColumn extends StatelessWidget {
   });
 
   void _navigate(BuildContext context, Widget page) {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (c, a, sa) => page,
-        transitionsBuilder:
-            (c, a, sa, child) => FadeTransition(opacity: a, child: child),
-      ),
-    );
+    _footerNavigate(context, page);
   }
 
   Widget? _getDestination(String label) {
@@ -288,6 +307,8 @@ class _FooterNavColumn extends StatelessWidget {
       if (key == 'about') return const AboutPage();
       if (key == 'contact') return const ContactPage();
       if (key == 'services') return const ServicesPage();
+      if (key == 'privacy') return const PrivacyPolicyPage();
+      if (key == 'terms') return const TermsOfServicePage();
     }
     return null;
   }
@@ -374,22 +395,16 @@ class _ContactItem extends StatelessWidget {
 
 class _FooterBottomLink extends StatelessWidget {
   final String text;
-  const _FooterBottomLink(this.text);
+  final Widget page;
+
+  const _FooterBottomLink(this.text, {required this.page});
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(text),
-              behavior: SnackBarBehavior.floating,
-              duration: const Duration(seconds: 2),
-            ),
-          );
-        },
+        onTap: () => _footerNavigate(context, page),
         child: Text(
           text,
           style: GoogleFonts.inter(

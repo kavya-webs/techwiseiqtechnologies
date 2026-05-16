@@ -371,7 +371,7 @@ class _PhilosophySection extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset(
-              'assets/images/burj.jpeg',
+              'assets/images/dubaiimg.JPEG',
               height: 420,
               fit: BoxFit.cover,
               errorBuilder:
@@ -393,7 +393,7 @@ class _PhilosophySection extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.asset(
-            'assets/images/burj.jpeg',
+            'assets/images/dubaiimg.JPEG',
             height: 250,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -582,9 +582,10 @@ class _LeadershipSection extends StatelessWidget {
                     ? Column(
                       children: const [
                         _Leader(
-                          'Bansi Khakher',
+                          'Rudra Makwana',
                           'CEO',
-                          'Visionary leader with 15+ years shaping enterprise tech.',
+                          'Experienced leader guiding strategic vision and enterprise technology growth.',
+                          imageAsset: 'assets/images/rudra.jpeg',
                         ),
                         SizedBox(height: 16),
                         _Leader(
@@ -594,9 +595,9 @@ class _LeadershipSection extends StatelessWidget {
                         ),
                         SizedBox(height: 16),
                         _Leader(
-                          'Rudra Makwana',
-                          'Operations Head',
-                          'NESA compliance expert with a decade of experience.',
+                          'Aditya Yadav',
+                          'Operational Head',
+                          'Drives operational excellence and seamless delivery across client engagements.',
                         ),
                       ],
                     )
@@ -604,9 +605,10 @@ class _LeadershipSection extends StatelessWidget {
                       children: const [
                         Expanded(
                           child: _Leader(
-                            'Bansi Khakher',
+                            'Rudra Makwana',
                             'CEO',
-                            'Visionary leader with 15+ years shaping enterprise tech.',
+                            'Experienced leader guiding strategic vision and enterprise technology growth.',
+                            imageAsset: 'assets/images/rudra.jpeg',
                           ),
                         ),
                         SizedBox(width: 24),
@@ -620,9 +622,9 @@ class _LeadershipSection extends StatelessWidget {
                         SizedBox(width: 24),
                         Expanded(
                           child: _Leader(
-                            'Rudra Makwana',
-                            'Operations Head',
-                            'NESA compliance expert with a decade of experience.',
+                            'Aditya Yadav',
+                            'Operational Head',
+                            'Drives operational excellence and seamless delivery across client engagements.',
                           ),
                         ),
                       ],
@@ -636,7 +638,41 @@ class _LeadershipSection extends StatelessWidget {
 
 class _Leader extends StatelessWidget {
   final String name, role, desc;
-  const _Leader(this.name, this.role, this.desc);
+  final String? imageAsset;
+  const _Leader(this.name, this.role, this.desc, {this.imageAsset});
+
+  Widget _avatar() {
+    if (imageAsset != null) {
+      return ClipOval(
+        child: Image.asset(
+          imageAsset!,
+          width: 80,
+          height: 80,
+          fit: BoxFit.cover,
+          errorBuilder:
+              (_, __, ___) => Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.cyan.withValues(alpha: 0.1),
+                ),
+                child: const Icon(Icons.person, size: 40, color: AppColors.cyan),
+              ),
+        ),
+      );
+    }
+    return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: AppColors.cyan.withValues(alpha: 0.1),
+      ),
+      child: const Icon(Icons.person, size: 40, color: AppColors.cyan),
+    );
+  }
+
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(32),
@@ -647,15 +683,7 @@ class _Leader extends StatelessWidget {
     ),
     child: Column(
       children: [
-        Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.cyan.withValues(alpha: 0.1),
-          ),
-          child: const Icon(Icons.person, size: 40, color: AppColors.cyan),
-        ),
+        _avatar(),
         const SizedBox(height: 20),
         Text(
           name,

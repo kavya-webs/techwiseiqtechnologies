@@ -809,7 +809,7 @@ class _AboutSection extends StatelessWidget {
                         width: double.infinity,
                         height: 300,
                         child: Image.asset(
-                          'assets/images/burj.jpeg',
+                          'assets/images/dubaiimg.JPEG',
                           fit: BoxFit.cover,
                           errorBuilder:
                               (_, __, ___) =>
@@ -839,7 +839,7 @@ class _AboutSection extends StatelessWidget {
                         child: SizedBox(
                           height: 420,
                           child: Image.asset(
-                            'assets/images/burj.jpeg',
+                            'assets/images/dubaiimg.JPEG',
                             fit: BoxFit.cover,
                             errorBuilder:
                                 (_, __, ___) =>
